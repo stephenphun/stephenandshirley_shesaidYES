@@ -500,5 +500,24 @@
 
     <script src="script.js"></script>
 
+
+    <script>
+    // On refresh/reload, reset the page to the top instead of restoring the previous scroll position.
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+
+    window.addEventListener("beforeunload", function () {
+        window.scrollTo(0, 0);
+    });
+
+    window.addEventListener("load", function () {
+        window.scrollTo(0, 0);
+        requestAnimationFrame(function () {
+            window.scrollTo(0, 0);
+        });
+    });
+    </script>
+
 </body>
 </html>
