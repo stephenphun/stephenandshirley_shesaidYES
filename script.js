@@ -1,4 +1,4 @@
-﻿// scroll animation
+// scroll animation
 
 const reveal =
 document.querySelectorAll(".reveal");
@@ -111,39 +111,69 @@ setInterval(
     1000
 );
 
+// Wedding music autoplay: try on page load, then retry on scroll or first interaction.
+// Browsers may still require a user gesture before allowing audible playback.
+(function () {
+    function setupWeddingMusic() {
+        var music = document.getElementById("music");
+        if (!music) return;
 
+        music.loop = true;
+        music.volume = 0.5;
 
-// open button
+        var hasStarted = false;
 
-function openInvitation() {
+        function tryPlayMusic() {
+            if (!music || !music.paused) {
+                if (music && !music.paused) hasStarted = true;
+                return;
+            }
 
-    window.scrollTo({
+            var result = music.play();
+            if (result && typeof result.then === "function") {
+                result.then(function () {
+                    hasStarted = true;
+                }).catch(function () {
+                    // Browser may block audible autoplay until a user gesture.
+                });
+            }
+        }
 
-        top: window.innerHeight,
+        // Initial attempt when the invitation opens.
+        tryPlayMusic();
 
-        behavior: "smooth"
+        // Retry when the visitor scrolls. Scrolling is a user interaction in many browsers.
+        function onScroll() {
+            if (!hasStarted && music.paused) tryPlayMusic();
+            if (hasStarted) {
+                window.removeEventListener("scroll", onScroll);
+            }
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
 
-    });
+        // Also retry on touch/click/key interaction, since this is the most reliable fallback.
+        function onFirstInteraction() {
+            if (!hasStarted && music.paused) tryPlayMusic();
+            if (hasStarted) {
+                window.removeEventListener("scroll", onScroll);
+                document.removeEventListener("pointerdown", onFirstInteraction);
+                document.removeEventListener("keydown", onFirstInteraction);
+                document.removeEventListener("touchstart", onFirstInteraction);
+            }
+        }
+        document.addEventListener("pointerdown", onFirstInteraction);
+        document.addEventListener("keydown", onFirstInteraction);
+        document.addEventListener("touchstart", onFirstInteraction, { passive: true });
 
+        window.addEventListener("pageshow", tryPlayMusic);
+        document.addEventListener("visibilitychange", function () {
+            if (!document.hidden && music.paused) tryPlayMusic();
+        });
+    }
 
-}
-
-
-
-// vinyl music control
-
-function openInvitation() {
-
-    const music = document.getElementById("music");
-
-    music.volume = 0.5;
-
-    music.play();
-
-
-    window.scrollTo({
-        top: window.innerHeight,
-        behavior: "smooth"
-    });
-
-}
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setupWeddingMusic);
+    } else {
+        setupWeddingMusic();
+    }
+})();
