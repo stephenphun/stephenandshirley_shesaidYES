@@ -33,83 +33,28 @@ window.addEventListener(
 
 
 
-// Countdown
-
-const weddingDate =
-new Date("2027-01-23T10:00:00").getTime();
-
+// Countdown to the wedding ceremony: 23 January 2027 at 10:00 AM (Malaysia local time).
+// JavaScript Date(year, monthIndex, day, hour, minute, second) uses the visitor's local timezone.
+const weddingDate = new Date(2027, 0, 23, 10, 0, 0).getTime();
 
 function updateCountdown() {
+    const now = Date.now();
+    const gap = Math.max(0, weddingDate - now);
 
+    const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((gap % (1000 * 60)) / 1000);
 
-    const now =
-    new Date().getTime();
-
-
-    const gap =
-    weddingDate - now;
-
-
-
-    const days =
-    Math.floor(
-        gap / (1000 * 60 * 60 * 24)
-    );
-
-
-    const hours =
-    Math.floor(
-        (gap % (1000 * 60 * 60 * 24))
-        /
-        (1000 * 60 * 60)
-    );
-
-
-    const mins =
-    Math.floor(
-        (gap % (1000 * 60 * 60))
-        /
-        (1000 * 60)
-    );
-
-
-    const secs =
-    Math.floor(
-        (gap % (1000 * 60))
-        /
-        1000
-    );
-
-
-
-    document.getElementById("days").innerHTML =
-    days;
-
-
-    document.getElementById("hours").innerHTML =
-    hours;
-
-
-    document.getElementById("mins").innerHTML =
-    mins;
-
-
-    document.getElementById("secs").innerHTML =
-    secs.toString().padStart(2, "0");
-
-
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("mins").textContent = String(mins).padStart(2, "0");
+    document.getElementById("secs").textContent = String(secs).padStart(2, "0");
 }
 
-
-// run immediately
+// Update immediately and then every second.
 updateCountdown();
-
-
-// run every second
-setInterval(
-    updateCountdown,
-    1000
-);
+setInterval(updateCountdown, 1000);
 
 // Wedding music autoplay: try on page load, then retry on scroll or first interaction.
 // Browsers may still require a user gesture before allowing audible playback.
