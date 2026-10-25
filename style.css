@@ -720,120 +720,110 @@ button,
 /* TIMELINE */
 
 
+/* Order of the Day */
 .timeline-section {
-    background: #f8f1e8;
-    padding: 80px 20px;
-    color: #315b2d;
+    background: #ffffff;
+    padding: 70px 24px;
+    color: #111111;
 }
-
-
 
 .timeline-title {
     font-family: 'Great Vibes';
-    font-size: 50px;
-    color: #b69b78;
-    margin-bottom: 0;
-    font-weight: 200;
-    padding-bottom: 50px;
+    font-family: inherit;
+    font-size: 38px;
+    letter-spacing: 5px;
+    text-align: center;
+    color: #111111;
+    margin: 0 0 14px;
+    font-weight: 500;
+    padding-bottom: 0;
 }
 
-
-.timeline-sub {
-    letter-spacing: 4px;
-    margin-bottom: 50px;
+.timeline-heading-divider {
+    max-width: 300px;
+    margin: 0 auto 38px;
 }
-
-
-
-
 
 .timeline {
     position: relative;
-    width: 400px;
-    margin: auto;
+    width: min(100%, 760px);
+    margin: 0 auto;
+    padding: 0;
 }
 
-
-
-    /* middle line */
-
-    .timeline::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 47%;
-        width: 2px;
-        background: #315b2d;
-        transform: translateX(-50%);
-    }
-
-
-
-
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 190px;
+    width: 1.5px;
+    background: #485522;
+}
 
 .timeline-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 150px 80px minmax(0, 1fr);
     align-items: center;
-    margin-bottom: 55px;
     position: relative;
+    min-height: 132px;
+    margin: 0;
+    column-gap: 0;
 }
 
-
-
-    .timeline-item.left {
-        justify-content: flex-start;
-    }
-
-
-    .timeline-item.right {
-        justify-content: flex-end;
-    }
-
-
-
-
-
-.icon {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: #f8f1e8;
-    border: 2px solid #315b2d;
+.timeline-icon {
+    width: 132px;
+    height: 104px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    z-index: 2;
+    color: #485522;
+    justify-self: center;
 }
 
-
-
-
-
-.info {
-    width: 130px;
-    font-size: 13px;
+.timeline-icon svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 }
 
+.timeline-heart {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    width: 34px;
+    height: 34px;
+    background: #ffffff;
+    color: #485522;
+    font-size: 29px;
+    line-height: 1;
+}
 
+.timeline .info {
+    width: auto;
+    min-width: 0;
+    padding: 8px 0 8px 4px;
+    font-size: 18px;
+    text-align: left;
+}
 
-    .info h4 {
-        font-size: 13px;
-        letter-spacing: 2px;
-    }
+.timeline .info h4 {
+    color: #111111;
+    font-size: 25px;
+    letter-spacing: 0;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 4px;
+}
 
-
-
-    .info p {
-        font-size: 12px;
-    }
-
-
-
-
-
-
+.timeline .info p {
+    color: #111111;
+    font-size: 19px;
+    line-height: 1.3;
+    margin: 0;
+}
 
 /* Dress */
 
@@ -875,5 +865,61 @@ button,
         width: 55px;
         height: 55px;
         font-size: 25px;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    .timeline-section {
+        padding: 48px 16px;
+    }
+
+    .timeline-title {
+        font-size: 45px;
+        letter-spacing: 3px;
+        font-family: 'Great Vibes';
+    }
+
+    .timeline-heading-divider {
+        max-width: 210px;
+        margin-bottom: 28px;
+    }
+
+    .timeline {
+        width: 100%;
+    }
+
+    .timeline::before {
+        left: 82px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 62px 40px minmax(0, 1fr);
+        min-height: 112px;
+    }
+
+    .timeline-icon {
+        width: 66px;
+        height: 72px;
+    }
+
+    .timeline-heart {
+        width: 28px;
+        height: 28px;
+        font-size: 23px;
+    }
+
+    .timeline .info {
+        padding-left: 4px;
+    }
+
+    .timeline .info h4 {
+        font-size: 18px;
+    }
+
+    .timeline .info p {
+        font-size: 14px;
+        line-height: 1.35;
     }
 }
