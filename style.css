@@ -796,7 +796,7 @@ button,
     width: 34px;
     height: 34px;
     background: #ffffff;
-    color: #485522;
+    color: #d85b75;
     font-size: 29px;
     line-height: 1;
 }
@@ -810,7 +810,7 @@ button,
 }
 
 .timeline .info h4 {
-    color: #111111;
+    color: #d85b75;
     font-size: 25px;
     letter-spacing: 0;
     font-weight: 700;
