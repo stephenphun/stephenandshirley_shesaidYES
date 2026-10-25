@@ -70,9 +70,9 @@ h2 {
 
 
 .year {
-    font-size: 18px;
-    letter-spacing: 8px;
+    font-size: 24px;
     margin-bottom: 5px;
+    font-weight: 800;
 }
 
 
@@ -109,13 +109,13 @@ h2 {
 
     .date-side span {
         display: block;
-        font-size: 12px;
+        font-size: 14px;
     }
 
 
 
     .date-side small {
-        font-size: 10px;
+        font-size: 12px;
         letter-spacing: 3px;
     }
 
@@ -124,8 +124,13 @@ h2 {
 .lunar {
     margin-top: 12px;
     font-size: 13px;
-    letter-spacing: 5px;
 }
+
+    .lunar > span {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
 
 
 
@@ -144,7 +149,7 @@ h2 {
 
 
         .date-side span {
-            font-size: 10px;
+            font-size: 14px;
         }
 }
 
@@ -208,14 +213,35 @@ button,
 
 
 .card {
-    background: white;
-    padding: 30px;
+    padding: 10px;
     margin: 15px;
     width: 280px;
     border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.1);
 }
 
+.card h3 {
+    text-transform: uppercase;
+}
+
+.love-divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 60%;
+}
+
+.love-divider::before,
+.love-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #d8a0a0;
+}
+
+.love-divider span {
+    color: #d85b75;
+    font-size: 20px;
+}
 
 
 /* ANIMATION */
@@ -425,7 +451,7 @@ button,
 
 
 .signature {
-    font-family: 'Arizonia';
+    font-family: 'Great Vibes', cursive;
     font-size: 72px;
     color: #b5a06f;
     font-weight: 400;
@@ -522,8 +548,9 @@ button,
 
 
     .chinese-name {
-        font-size: 14px;
+        font-size: 28px;
         letter-spacing: 5px;
+        font-weight: 200;
     }
 
 
@@ -703,9 +730,11 @@ button,
 
 .timeline-title {
     font-family: 'Great Vibes';
-    font-size: 60px;
+    font-size: 50px;
     color: #b69b78;
     margin-bottom: 0;
+    font-weight: 200;
+    padding-bottom: 50px;
 }
 
 
