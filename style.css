@@ -626,7 +626,7 @@ button,
 
 
 
-    /* small center hole */
+    /* small center hole 
 
     .vinyl-photo::after {
         content: "";
@@ -639,7 +639,7 @@ button,
         transform: translate(-50%,-50%);
         border-radius: 50%;
     }
-
+        */
 
 /* spinning */
 
@@ -1090,8 +1090,8 @@ body {
     }
 
     .vinyl-photo {
-        width: 63% !important;
-        height: 63% !important;
+        width: 80% !important;
+        height: 80% !important;
     }
 
     .invite-text,
