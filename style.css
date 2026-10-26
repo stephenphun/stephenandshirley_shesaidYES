@@ -361,11 +361,16 @@ button,
 .wedding-day::before {
     content: "♡";
     position: absolute;
+    font-family: Arial, sans-serif;
     font-size: 46px;
+    font-weight: 400;
+    line-height: 1;
     color: #d85b75;
-    top: 50%;
+    top: 70%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    box-sizing: border-box;
 }
 
 
