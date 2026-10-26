@@ -361,7 +361,7 @@ button,
 .wedding-day::before {
     content: "♡";
     position: absolute;
-    font-size: 34px;
+    font-size: 46px;
     color: #d85b75;
     top: 50%;
     left: 50%;
@@ -876,21 +876,21 @@ button,
     margin: 0;
 }
 
-/* Dress */
+/* love icon */
 
 
-.dress-code {
+.love-icon {
     max-width: 400px;
 }
 
 
 
-    .dress-code h2 {
+    .love-icon  h2 {
         font-size: 50px;
     }
 
 
-.dress-icon {
+.icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -899,11 +899,11 @@ button,
     text-align: center;
 }
 
-.dress-icon img {
+.icon img {
     display: block;
     width: 80px;
     height: auto;
-    max-width: 45%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -1113,7 +1113,7 @@ body {
     }
 
     .invite-text,
-    .dress-code,
+    .love-icon,
     .couple-photo {
         width: 100% !important;
         max-width: 100% !important;
