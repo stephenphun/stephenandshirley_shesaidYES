@@ -1,4 +1,4 @@
-﻿* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -161,8 +161,8 @@ button,
     padding: 14px 35px;
     border-radius: 40px;
     border: none;
-    background: #8b6b4a;
-    color: white;
+    background: #e8dfc9;
+    color: #6b4b35;
     text-decoration: none;
     font-size: 15px;
 }
@@ -271,7 +271,7 @@ button,
 
 .small-title {
     font-family: 'Great Vibes';
-    font-size: 28px;
+    font-size: 45px;
     color: #b69b78;
 }
 
@@ -287,17 +287,24 @@ button,
 
 
     .big-countdown span {
-        font-size: 45px;
+        font-size: 28px;
         font-weight: 600;
     }
 
 
 
     .big-countdown p {
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 2px;
     }
 
+
+.countdown-container {
+    background: #f8f1e8;
+    padding: 10px;
+    border-radius: 10px;
+    width: 75px;
+}
 
 
 .colon {
@@ -307,7 +314,7 @@ button,
 
 
 .big-day {
-    font-size: 55px;
+    font-size: 45px;
     color: #b69b78;
     margin: 20px 0 0;
 }
@@ -316,7 +323,7 @@ button,
 
 .month {
     font-family: 'Great Vibes';
-    font-size: 45px;
+    font-size: 35px;
     color: #315b2d;
     margin-bottom: 35px;
 }
@@ -325,11 +332,12 @@ button,
 
 
 .calendar {
-    width: 360px;
+    width: 400px;
+    height: auto;
     display: grid;
     grid-template-columns: repeat(7,1fr);
     gap: 18px;
-    font-size: 13px;
+    font-size: 16px;
     background: #f8f1e8;
     padding: 10px;
     border-radius: 20px;
@@ -352,8 +360,8 @@ button,
 .wedding-day::before {
     content: "♡";
     position: absolute;
-    font-size: 45px;
-    color: #b69b78;
+    font-size: 58px;
+    color: #d85b75;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -370,7 +378,7 @@ button,
 
 
     .calendar {
-        width: 300px;
+        width: 100%;
         gap: 14px;
         background: #f8f1e8;
         padding: 10px;
@@ -657,6 +665,42 @@ button,
     font-size: 14px;
 }
 
+
+.music-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 28px;
+}
+
+.music-note {
+    display: inline-block;
+    animation: musicBounce 0.8s ease-in-out infinite alternate;
+}
+
+.music-note:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.music-note:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.music-note:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes musicBounce {
+    from {
+        transform: translateY(6px);
+    }
+    to {
+        transform: translateY(-6px);
+    }
+}
+
+
 .vinyl-title {
     margin-bottom: 25px;
     letter-spacing: 3px;
@@ -696,6 +740,7 @@ button,
 
     h2 {
         font-size: 45px;
+        font-weight: 200;
     }
 
 
@@ -733,7 +778,7 @@ button,
     font-size: 38px;
     letter-spacing: 5px;
     text-align: center;
-    color: #111111;
+    color: #d8a0a0;
     margin: 0 0 14px;
     font-weight: 500;
     padding-bottom: 0;
@@ -799,6 +844,7 @@ button,
     color: #d85b75;
     font-size: 29px;
     line-height: 1;
+    margin-left: 8px;
 }
 
 .timeline .info {
@@ -920,5 +966,147 @@ button,
     .timeline .info p {
         font-size: 14px;
         line-height: 1.35;
+    }
+}
+
+
+/* Countdown decorations matching the supplied reference */
+.countdown-calendar-icon {
+    width: 86px;
+    height: 86px;
+    margin: 0 auto 12px;
+    color: #3f403c;
+}
+    .countdown-calendar-icon svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #b69b78;
+    }
+.countdown-botanical-divider {
+    width: min(320px, 78%);
+    margin: 22px auto 28px;
+    color: #77766f;
+}
+.countdown-botanical-divider svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* FINAL MOBILE OVERFLOW PATCH */
+html {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    position: relative;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    body > *,
+    section,
+    .hero,
+    .hero-banner,
+    .content,
+    .count,
+    .calendar-section,
+    .timeline-section,
+    .timeline,
+    .couple-intro,
+    .vinyl-section,
+    .rsvp {
+        max-width: 100% !important;
+    }
+
+    section {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .hero-banner {
+        width: calc(100% - 16px) !important;
+        max-width: 420px !important;
+    }
+
+    .calendar {
+        width: 100% !important;
+        max-width: 400px !important;
+        grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+        gap: 4px !important;
+    }
+
+    .timer {
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 5px !important;
+    }
+
+    .timer > div {
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
+        width: auto !important;
+    }
+
+    .timeline {
+        width: 100% !important;
+        max-width: 60% !important;
+    }
+
+    .timeline-item {
+        min-width: 0 !important;
+        grid-template-columns: minmax(48px, 62px) 32px minmax(0, 1fr) !important;
+    }
+
+    .timeline-icon {
+        width: 100% !important;
+        max-width: 62px !important;
+    }
+
+    .timeline .info,
+    .timeline .info p,
+    .timeline .info h4 {
+        min-width: 0 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .vinyl {
+        width: min(230px, 72vw) !important;
+        height: min(230px, 72vw) !important;
+    }
+
+    .vinyl-photo {
+        width: 63% !important;
+        height: 63% !important;
+    }
+
+    .invite-text,
+    .dress-code,
+    .couple-photo {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .couple-photo {
+        max-width: 220px !important;
+    }
+
+    .chinese-name {
+        max-width: 100% !important;
+        overflow-wrap: anywhere;
     }
 }
