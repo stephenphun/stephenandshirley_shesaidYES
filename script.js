@@ -45,6 +45,22 @@
 })();
 
 
+// Pause the continuously rotating vinyl while it is off-screen.
+// This reduces unnecessary animation work during page scrolling on mobile and desktop.
+(function () {
+    var vinyl = document.getElementById("vinyl");
+    if (!vinyl || !("IntersectionObserver" in window)) return;
+
+    var vinylObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            vinyl.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+        });
+    }, { threshold: 0 });
+
+    vinylObserver.observe(vinyl);
+})();
+
+
 // Countdown to the wedding ceremony: 23 January 2027 at 10:00 AM (Malaysia local time).
 // JavaScript Date(year, monthIndex, day, hour, minute, second) uses the visitor's local timezone.
 const weddingDate = new Date(2027, 0, 23, 10, 0, 0).getTime();
