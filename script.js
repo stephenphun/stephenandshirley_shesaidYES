@@ -1,36 +1,48 @@
-// scroll animation
+// Reveal sections efficiently while scrolling.
+// IntersectionObserver avoids measuring every section on every scroll event,
+// which can make scrolling stutter on mobile Safari.
+(function () {
+    const revealItems = document.querySelectorAll(".reveal");
 
-const reveal =
-document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: "0px 0px -100px 0px",
+            threshold: 0
+        });
 
-
-window.addEventListener(
-"scroll",
-() => {
-
-
-    reveal.forEach(item=> {
-
-
-        let top =
-        item.getBoundingClientRect().top;
-
-
-        if (top < window.innerHeight - 100) {
-
-
-            item.classList.add("active");
-
-
+        revealItems.forEach(function (item) {
+            revealObserver.observe(item);
+        });
+    } else {
+        // Fallback for older browsers: check only once per animation frame.
+        let scheduled = false;
+        function revealVisibleItems() {
+            scheduled = false;
+            revealItems.forEach(function (item) {
+                if (!item.classList.contains("active") &&
+                    item.getBoundingClientRect().top < window.innerHeight - 100) {
+                    item.classList.add("active");
+                }
+            });
         }
-
-
-    });
-
-
-});
-
-
+        window.addEventListener("scroll", function () {
+            if (!scheduled) {
+                scheduled = true;
+                window.requestAnimationFrame(revealVisibleItems);
+            }
+        }, { passive: true });
+        window.addEventListener("load", revealVisibleItems);
+        revealVisibleItems();
+    }
+})();
 
 
 // Countdown to the wedding ceremony: 23 January 2027 at 10:00 AM (Malaysia local time).
@@ -87,20 +99,10 @@ setInterval(updateCountdown, 1000);
         // Initial attempt when the invitation opens.
         tryPlayMusic();
 
-        // Retry when the visitor scrolls. Scrolling is a user interaction in many browsers.
-        function onScroll() {
-            if (!hasStarted && music.paused) tryPlayMusic();
-            if (hasStarted) {
-                window.removeEventListener("scroll", onScroll);
-            }
-        }
-        window.addEventListener("scroll", onScroll, { passive: true });
-
         // Also retry on touch/click/key interaction, since this is the most reliable fallback.
         function onFirstInteraction() {
             if (!hasStarted && music.paused) tryPlayMusic();
             if (hasStarted) {
-                window.removeEventListener("scroll", onScroll);
                 document.removeEventListener("pointerdown", onFirstInteraction);
                 document.removeEventListener("keydown", onFirstInteraction);
                 document.removeEventListener("touchstart", onFirstInteraction);
