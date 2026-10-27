@@ -140,3 +140,24 @@ setInterval(updateCountdown, 1000);
         setupWeddingMusic();
     }
 })();
+
+// Whatsapp
+function sendRSVP() {
+    var name = document.getElementById("guestName").value.trim();
+    var pax = document.getElementById("guestPax").value;
+
+    if (name === "" || pax === "" || Number(pax) < 1) {
+        alert("Please enter your name and number of guests.");
+        return;
+    }
+
+    var message =
+        "Hi, I would like to RSVP for your wedding.\n" +
+        "Name: " + name + "\n" +
+        "Pax: " + pax;
+
+    var url = "https://wa.me/60165758474?text=" +
+        encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}

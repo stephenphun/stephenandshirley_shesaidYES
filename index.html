@@ -67,10 +67,7 @@
                    <h2>Dear Friends & Family,</h2>
                         
                     <span>
-                        We are so happy to invite you<br />
-                        to share this meaningful day with us.<br />
-                        Your presence will make our<br />
-                        wedding even more special.
+                        With grateful hearts and the blessing of ourfamilies, we invite you to share in our joyas we exchange vows of holy matrimony. <br />Your presence at our wedding <br />means the world to us.
                     </span>
                 </div>
 
@@ -93,7 +90,7 @@
 
         </div>
 
-        <p style="margin: 25px 0;">❤️ 16 years together ❤️</p>
+        <p style="margin: 25px 0;font-family: 'Great Vibes Local', 'Great Vibes', cursive; font-size: 28px;color: #d85b75;">♥ 16 years together ♥</p>
         <p class="music-text">
             <span class="music-note">♫</span>
             <span class="music-note">♫</span>
@@ -119,7 +116,7 @@
 
         <div class="countdown-calendar-icon" aria-hidden="true">
             <div class="">
-                <img src="assets/wedding-icon_calender.svg" alt="Bride and groom wedding icon" />
+                <img style="width: 80%; margin: 0 auto;" src="assets/wedding-icon_calender.svg" alt="Bride and groom wedding icon" />
             </div>
         </div>
 
@@ -246,7 +243,7 @@
 
         <div class="timeline">
             <div class="timeline-item">
-                <div class="">
+                <div class="timeline-icon bounce">
                     <img src="assets/wedding-icon_guest.svg" alt="Bride and groom wedding icon" />
                 </div>
                 <div class="timeline-heart" aria-hidden="true">♥</div>
@@ -256,8 +253,8 @@
                 </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="">
+            <div class="timeline-item"> 
+                <div class="timeline-icon bounce2">
                     <img src="assets/wedding-icon_chruch.svg" alt="Bride and groom wedding icon" />
                 </div>
                 <div class="timeline-heart" aria-hidden="true">♥</div>
@@ -268,7 +265,7 @@
             </div>
 
             <div class="timeline-item">
-                <div class="">
+                <div class="timeline-icon bounce">
                     <img src="assets/wedding-icon_photo.svg" alt="Bride and groom wedding icon" />
                 </div>
                 <div class="timeline-heart" aria-hidden="true">♥</div>
@@ -279,7 +276,7 @@
             </div>
 
             <div class="timeline-item">
-                <div class="">
+                <div class="timeline-icon bounce2">
                     <img src="assets/wedding-icon_light refreshment.svg" alt="Bride and groom wedding icon" />
                 </div>
                 <div class="timeline-heart" aria-hidden="true">♥</div>
@@ -290,7 +287,7 @@
             </div>
 
             <div class="timeline-item">
-                <div class="">
+                <div class="timeline-icon bounce">
                     <img src="assets/wedding-icon_party over.svg" alt="Bride and groom wedding icon" />
                 </div>
                 <div class="timeline-heart" aria-hidden="true">♥</div>
@@ -337,15 +334,14 @@
             <h3>
                 Dress Code
             </h3>
+            <div class="icon">
+                <img src="assets/wedding-icon_dress code.svg" alt="Bride and groom wedding icon" />
+            </div>
             <p>
                 Formal / Elegant
             </p>
 
-            <div class="icon">
-                <img src="assets/wedding-icon_dress code.svg" alt="Bride and groom wedding icon" />
-            </div>
-
-            <p style="padding: 10px; border-radius: 10px;width: 65%;margin: 0 auto;">
+            <p style="padding: 10px; border-radius: 10px;width: 70%;margin: 0 auto;">
                 Kindly dress in soft pastel colors
                 to celebrate our special day.
             </p>
@@ -363,20 +359,19 @@
                 <img src="assets/wedding-icon_chruch.svg" alt="Bride and groom wedding icon" />
             </div>
 
-            <p style="margin:0 0 25px;">
+            <p>
                 Jesus Caritas Church<br>
                 Kepong
             </p>
+            <p style="padding: 10px; border-radius: 10px; width: 70%; margin: 15px auto;">Side street parking available. RELA marshals will be on duty to manage traffic and assist guests.</p>
             <a href="https://maps.app.goo.gl/SShtHz4mryDE18GN8" target="_blank">
                 Open Map
             </a>
-            <p style="padding: 10px; border-radius: 10px; width: 65%; margin: 30px auto 0;">Side street parking available. RELA marshals will be on duty to manage traffic and assist guests.</p>
-
 
         </div>
 
         <div class="love-divider">
-            <span>♥</span>
+            <span style="margin-top: 25px;">♥</span>
         </div>
         <div class="card love-icon">
             <h3>
@@ -386,8 +381,8 @@
                 <img src="assets/wedding-icon_light refreshment2.svg" alt="Bride and groom wedding icon" />
             </div>
 
-            <p style=" width: 65%; margin: 0 auto;">
-                Stick around after the mass for some light refreshments and mingling ❤️
+            <p style=" width: 70%; margin: 0 auto;">
+                Stick around after the mass for some light refreshments and mingling
             </p>
             <br />
         </div>
@@ -401,7 +396,7 @@
                 Confirm Attendance
             </h3>
 
-            <div class="icon">
+            <div class="icon hithere">
                 <img src="assets/wedding-icon_RSVP.svg" alt="Bride and groom wedding icon" />
             </div>
             <p>
@@ -409,12 +404,15 @@
                 before 10 November, 2026.
             </p>
             <br />
-            <a class="whatsapp"
-               href="https://wa.me/60166808474">
-
-                RSVP Now
-
-            </a>
+            <div class="rsvp-form">
+                <label for="guestName">Name:</label>
+                <input type="text" id="guestName" placeholder="Enter your name">
+                <label for="guestPax">Pax (including yourself):</label>
+                <input type="number" id="guestPax" placeholder="Number of guests" min="1">
+                <button type="button" class="whatsapp" onclick="sendRSVP()">
+                    RSVP Now
+                </button>
+            </div>
         </div>
 
 
