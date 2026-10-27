@@ -379,7 +379,7 @@ button,
 .wedding-day::before {
     content: "♡";
     position: absolute;
-    font-size: 46px;
+    font-size: 38px;
     color: #d85b75;
     top: 50%;
     left: 50%;
@@ -1318,6 +1318,55 @@ body {
     font-size: 14px;
     display:flex;
 }
+
+
+
+
+/* RSVP attendance choices */
+.rsvp-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 8px 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    text-align: left;
+    white-space: normal;
+}
+
+/* Radio button */
+.rsvp-option input[type="radio"] {
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+/* Keep the emoji and text together */
+.rsvp-option span {
+    display: inline;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+/* Form layout */
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+
 
 
 .hithere {

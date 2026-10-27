@@ -64,10 +64,10 @@
 
                 <div class="lunar">
                     <br />
-                   <h2>Dear Friends & Family,</h2>
+                   <h2>Dear Family & Friends,</h2>
                         
                     <span>
-                        With grateful hearts and the blessing of ourfamilies, we invite you to share in our joyas we exchange vows of holy matrimony. <br />Your presence at our wedding <br />means the world to us.
+                        With grateful hearts and the blessing of our families, we invite you to share in our joy as we exchange vows of holy matrimony. <br />Your presence at our wedding <br />means the world to us.
                     </span>
                 </div>
 
@@ -90,7 +90,11 @@
 
         </div>
 
-        <p style="margin: 25px 0;font-family: 'Great Vibes Local', 'Great Vibes', cursive; font-size: 28px;color: #d85b75;">♥ 16 years together ♥</p>
+        <p style="margin: 25px 0;">
+            <span style="color: #ff5bd5;">♥ </span>
+            <span style="font-family: 'Great Vibes Local', 'Great Vibes', cursive; font-size: 28px;">16 years together</span>
+            <span style="color: #ff5bd5;">♥ </span>
+        </p>
         <p class="music-text">
             <span class="music-note">♫</span>
             <span class="music-note">♫</span>
@@ -221,7 +225,7 @@
             <span>20</span>
             <span>21</span>
             <span>22</span>
-            <span class="wedding-day">23</span>
+            <span class="wedding-day hithere">23</span>
             <span>24</span>
             <span>25</span>
             <span>26</span>
@@ -400,15 +404,40 @@
                 <img src="assets/wedding-icon_RSVP.svg" alt="Bride and groom wedding icon" />
             </div>
             <p>
-                Please confirm your attendance<br />
-                before 10 November, 2026.
+                The favor of your respond before<br /> 10th November, 2026
             </p>
             <br />
+            <!--
             <div class="rsvp-form">
                 <label for="guestName">Name:</label>
                 <input type="text" id="guestName" placeholder="Enter your name">
                 <label for="guestPax">Pax (including yourself):</label>
                 <input type="number" id="guestPax" placeholder="Number of guests" min="1">
+                <button type="button" class="whatsapp" onclick="sendRSVP()">
+                    RSVP Now
+                </button>
+            </div>
+            -->
+
+            <div class="rsvp-form">
+
+                <label for="guestName">Name:</label>
+                <input type="text" id="guestName" placeholder="Enter your name">
+
+                <label for="guestPax">Pax (including yourself):</label>
+                <input type="number" id="guestPax" placeholder="Number of guests" min="" value="">
+
+                <label for="confirm">Will you be attending</label>
+
+                <label class="rsvp-option">
+                    <input type="radio" name="attendance" value="I’ll be there!" required>
+                    <span>❤️ I’ll be there!</span>
+                </label>
+                <label class="rsvp-option">
+                    <input type="radio" name="attendance" value="I can’t make it.">
+                    <span>💌 I can’t make it.</span>
+                </label>
+
                 <button type="button" class="whatsapp" onclick="sendRSVP()">
                     RSVP Now
                 </button>

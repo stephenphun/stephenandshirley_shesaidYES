@@ -1,4 +1,4 @@
-// Reveal sections efficiently while scrolling.
+﻿// Reveal sections efficiently while scrolling.
 // IntersectionObserver avoids measuring every section on every scroll event,
 // which can make scrolling stutter on mobile Safari.
 (function () {
@@ -142,21 +142,44 @@ setInterval(updateCountdown, 1000);
 })();
 
 // Whatsapp
+
 function sendRSVP() {
     var name = document.getElementById("guestName").value.trim();
     var pax = document.getElementById("guestPax").value;
+    var attendance = document.querySelector(
+        'input[name="attendance"]:checked'
+    );
 
-    if (name === "" || pax === "" || Number(pax) < 1) {
-        alert("Please enter your name and number of guests.");
+    if (name === "") {
+        alert("Please enter your name.");
         return;
     }
 
-    var message =
-        "Hi, I would like to RSVP for your wedding.\n" +
-        "Name: " + name + "\n" +
-        "Pax: " + pax;
+    if (!attendance) {
+        alert("Please select your attendance.");
+        return;
+    }
 
-    var url = "https://wa.me/60165758474?text=" +
+    if (
+        attendance.value === "I’ll be there!" &&
+        (!pax || Number(pax) < 1)
+    ) {
+        alert("Please enter the number of guests.");
+        return;
+    }
+
+    if (attendance.value === "I can’t make it.") {
+        pax = "0";
+    }
+
+    var message =
+        "Wedding RSVP \n\n" +
+        "Name: " + name + "\n" +
+        "Pax: " + pax + "\n" +
+        "Attendance: " + attendance.value;
+
+    var url =
+        "https://wa.me/60165758474?text=" +
         encodeURIComponent(message);
 
     window.open(url, "_blank");
