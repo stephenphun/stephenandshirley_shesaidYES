@@ -814,7 +814,7 @@ button,
 
 .timeline {
     position: relative;
-    width: min(100%, 760px);
+    width: min(100%, 500px);
     margin: 0 auto;
     padding: 0;
 }
@@ -867,7 +867,7 @@ button,
     color: #d85b75;
     font-size: 29px;
     line-height: 1;
-    margin-left: 8px;
+    margin-left: 2px;
 }
 
 .timeline .info {
@@ -1199,7 +1199,7 @@ body {
 }
 
 /* Desktop/tablet: normalize icon sizes and text scale without changing the layout. */
-@media screen and (min-width: 769px) {
+@media screen and (max-width: 769px) {
     body {
         font-size: 16px;
     }
@@ -1235,6 +1235,9 @@ body {
         width: min(760px, 100%);
     }
 
+    .timeline-heart {
+    margin-left: 8px;
+}
     .timeline-item {
         grid-template-columns: 150px 80px minmax(0, 1fr);
         min-height: 132px;
