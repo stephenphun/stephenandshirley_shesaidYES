@@ -404,7 +404,6 @@
             <h3>
                 Confirm Attendance
             </h3>
-
             <div class="icon hithere">
                 <img src="assets/wedding-icon_RSVP.svg" alt="Bride and groom wedding icon" />
             </div>
@@ -412,29 +411,29 @@
                 The favor of your respond before<br /> <strong class="pulse-text-size">15th November, 2026</strong>
             </p>
             <br />
-
             <div class="rsvp-form">
 
                 <label for="guestName">Name:</label>
                 <input type="text" id="guestName" placeholder="Enter your name">
 
                 <label for="guestPax">Pax (including yourself):</label>
-                <input type="number" id="guestPax" placeholder="Number of guests" min="" value="">
+                <input type="text" id="guestPax" placeholder="Number of guests" min="" value="">
 
                 <label for="confirm">Will you be attending?</label>
 
                 <label class="rsvp-option">
-                    <input type="radio" name="attendance" value="I’ll be there!" required>
+                    <input type="radio" name="attendance" value="church" required>
                     <span><span style="color:#d85b75">♥</span> I’ll be there!</span>
                 </label>
                 <label class="rsvp-option">
-                    <input type="radio" name="attendance" value="I can’t make it.">
+                    <input type="radio" name="attendance" value="none">
                     <span><span style="color:#d85b75">♥</span> Sorry, I can’t make it.</span>
                 </label>
 
                 <button type="button" class="whatsapp" onclick="sendRSVP()">
                     RSVP Now
                 </button>
+                <p id="rsvpStatus" role="status" aria-live="polite" style="font-size:12px;margin-top:10px;"></p>
             </div>
         </div>
 

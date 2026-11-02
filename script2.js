@@ -1,4 +1,4 @@
-﻿// Reveal sections efficiently while scrolling.
+// Reveal sections efficiently while scrolling.
 // IntersectionObserver avoids measuring every section on every scroll event,
 // which can make scrolling stutter on mobile Safari.
 (function () {
@@ -141,60 +141,54 @@ setInterval(updateCountdown, 1000);
     }
 })();
 
-// Whatsapp
-
+// Google Sheets RSVP submission
+var RSVP_GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwneu_RgEALzZU65gRyoaEbQFDcbS4gcfGiUKrBsWfHurBOYgiANsZT7ilWD0-hj81XHQ/exec";
 
 function sendRSVP() {
-    var name = document.getElementById("guestName").value.trim();
-    var pax = document.getElementById("guestPax").value;
+    var nameInput = document.getElementById("guestName");
+    var paxInput = document.getElementById("guestPax");
+    var status = document.getElementById("rsvpStatus");
+    var button = document.querySelector(".rsvp-form .whatsapp");
+    var attendance = document.querySelector('input[name="attendance"]:checked');
+    var name = nameInput.value.trim();
+    var pax = paxInput.value;
 
-    var attendance = document.querySelector(
-        'input[name="attendance"]:checked'
-    );
-
-    if (name === "") {
-        alert("Please enter your name.");
-        return;
-    }
-
-    if (!attendance) {
-        alert("Please select your attendance.");
-        return;
-    }
-
+    if (name === "") { alert("Please enter your name."); nameInput.focus(); return; }
+    if (!attendance) { alert("Please select your attendance."); return; }
     if (attendance.value !== "none" && (!pax || Number(pax) < 1)) {
-        alert("Please enter the number of guests.");
-        return;
+        alert("Please enter the number of guests."); paxInput.focus(); return;
     }
+    if (attendance.value === "none") pax = "0";
 
-    if (attendance.value === "none") {
-        pax = "0";
-    }
+    var church = (attendance.value === "church" || attendance.value === "both") ? "Yes" : "No";
+    var cafe = (attendance.value === "cafe" || attendance.value === "both") ? "Yes" : "No";
+    var attendanceText = attendance.value === "both" ? "Church & Cafe" :
+                         attendance.value === "church" ? "Church only" :
+                         attendance.value === "cafe" ? "Cafe only" :
+                         "Sorry, can't make it";
 
-    var church = "No";
-    var cafe = "No";
+    var formData = new URLSearchParams();
+    formData.append("name", name);
+    formData.append("pax", pax);
+    formData.append("attendance", attendanceText);
+    formData.append("church", church);
+    formData.append("cafe", cafe);
 
-    if (attendance.value === "both") {
-        church = "Yes";
-        cafe = "Yes";
-    } else if (attendance.value === "church") {
-        church = "Yes";
-    } else if (attendance.value === "cafe") {
-        cafe = "Yes";
-    }
+    if (button) { button.disabled = true; button.textContent = "Submitting..."; }
+    if (status) status.textContent = "Submitting your RSVP...";
 
-    var message =
-        "Wedding RSVP\n\n" +
-        "Name: " + name + "\n" +
-        "Pax (including yourself): " + pax + "\n\n" +
-        "Church (Morning): " + church + "\n" +
-        "Cafe (Dinner): " + cafe + "\n\n" +
-        "Attendance: " + attendance.value;
-
-    var url =
-        "https://wa.me/60165758474?text=" +
-        encodeURIComponent(message);
-
-    window.open(url, "_blank");
+    fetch(RSVP_GOOGLE_SCRIPT_URL, { method: "POST", mode: "no-cors", body: formData })
+        .then(function () {
+            if (status) status.textContent = "Thank you! Your RSVP request has been sent. ❤️";
+            alert("Thank you! Your RSVP request has been sent. ❤️");
+            nameInput.value = ""; paxInput.value = "";
+            document.querySelectorAll('input[name="attendance"]').forEach(function (radio) { radio.checked = false; });
+        })
+        .catch(function () {
+            if (status) status.textContent = "Sorry, we couldn't send your RSVP. Please try again.";
+            alert("Sorry, we couldn't send your RSVP. Please check your internet connection and try again.");
+        })
+        .then(function () {
+            if (button) { button.disabled = false; button.textContent = "RSVP Now"; }
+        });
 }
-

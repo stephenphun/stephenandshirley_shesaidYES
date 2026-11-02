@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -496,54 +496,26 @@
             <div class="rsvp-form">
 
                 <label for="guestName">Name:</label>
-                <input type="text"
-                       id="guestName"
-                       placeholder="Enter your name">
+                <input type="text" id="guestName" placeholder="Enter your name" autocomplete="name">
 
                 <label for="guestPax">Pax (including yourself):</label>
-                <input type="number"
-                       id="guestPax"
-                       placeholder="Number of guests" />
+                <input type="text" id="guestPax" placeholder="Number of guests">
 
-                <p style="font-size: 14px;margin-top: 15px;">Will you be attending?</p>
+                <p style="font-size: 14px; margin-top: 15px;">Will you be attending?</p>
 
                 <label class="rsvp-option">
                     <input type="radio" name="attendance" value="both" required>
-                    <span>
-                        <span>
-                            <span style="color:#d85b75">♥</span>
-                            I’ll be there!
-                        </span>
-                        <span style="font-size: 11px;display: block;margin-left: 11px;line-height: 2.1;">
-                            (Church &amp; Cafe)
-                        </span>
-                    </span>
+                    <span><span><span style="color:#d85b75">♥</span> I’ll be there!</span><span style="font-size:11px;display:block;margin-left:11px;line-height:2.1;">(Church &amp; Cafe)</span></span>
                 </label>
 
                 <label class="rsvp-option">
                     <input type="radio" name="attendance" value="church">
-                    <span>
-                        <span>
-                            <span style="color:#d85b75">♥</span>
-                            I’ll be there!
-                        </span>
-                        <span style="font-size: 11px;display: block;margin-left: 11px;line-height: 2.1;">
-                            (Church only)
-                        </span>
-                    </span>
+                    <span><span><span style="color:#d85b75">♥</span> I’ll be there!</span><span style="font-size:11px;display:block;margin-left:11px;line-height:2.1;">(Church only)</span></span>
                 </label>
 
                 <label class="rsvp-option">
                     <input type="radio" name="attendance" value="cafe">
-                    <span>
-                        <span>
-                            <span style="color:#d85b75">♥</span>
-                            I’ll be there!
-                        </span>
-                        <span style="font-size: 11px;display: block;margin-left: 11px;line-height: 2.1;">
-                            (Cafe only)
-                        </span>
-                    </span>
+                    <span><span><span style="color:#d85b75">♥</span> I’ll be there!</span><span style="font-size:11px;display:block;margin-left:11px;line-height:2.1;">(Cafe only)</span></span>
                 </label>
 
                 <label class="rsvp-option">
@@ -554,7 +526,7 @@
                 <button type="button" class="whatsapp" onclick="sendRSVP()">
                     RSVP Now
                 </button>
-
+                <p id="rsvpStatus" role="status" aria-live="polite" style="font-size:12px;margin-top:10px;"></p>
             </div>
 
         </div>
