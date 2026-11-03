@@ -1,4 +1,4 @@
-﻿// Reveal sections efficiently while scrolling.
+// Reveal sections efficiently while scrolling.
 // IntersectionObserver avoids measuring every section on every scroll event,
 // which can make scrolling stutter on mobile Safari.
 (function () {
@@ -142,31 +142,39 @@ setInterval(updateCountdown, 1000);
 })();
 
 // Google Sheets RSVP submission
-var RSVP_GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwneu_RgEALzZU65gRyoaEbQFDcbS4gcfGiUKrBsWfHurBOYgiANsZT7ilWD0-hj81XHQ/exec";
+var RSVP_GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzB5VZsAjD_HDTSu5XPK33tUrBYo3nJUZjtwDqWyC3kXsKySkrTWhjLhEmYKuNlnEtFWQ/exec";
 
 function sendRSVP() {
     var nameInput = document.getElementById("guestName");
+    var phoneInput = document.getElementById("guestPhone");
     var paxInput = document.getElementById("guestPax");
     var status = document.getElementById("rsvpStatus");
     var button = document.querySelector(".rsvp-form .whatsapp");
     var attendance = document.querySelector('input[name="attendance"]:checked');
     var name = nameInput.value.trim();
-    var pax = paxInput.value;
+    var phone = phoneInput ? phoneInput.value.trim() : "";
+    var pax = paxInput.value.trim();
 
     if (name === "") { alert("Please enter your name."); nameInput.focus(); return; }
+    if (phone === "") { alert("Please enter your phone number."); if (phoneInput) phoneInput.focus(); return; }
+    var phoneDigits = phone.replace(/\D/g, "");
+    if (phoneDigits.length < 7) { alert("Please enter a valid phone number."); if (phoneInput) phoneInput.focus(); return; }
     if (!attendance) { alert("Please select your attendance."); return; }
-    if (attendance.value !== "none" && (!pax || Number(pax) < 1)) {
+    if (attendance.value !== "none" && (!pax || Number(pax) < 1 || !Number.isFinite(Number(pax)))) {
         alert("Please enter the number of guests."); paxInput.focus(); return;
     }
     if (attendance.value === "none") pax = "0";
 
-    var church = attendance.value === "church" ? "Yes" : "No";
-    var cafe = attendance.value === "cafe" ? "Yes" : "No";
-    var attendanceText = attendance.value === "church" ? "Church" :
-                         attendance.value === "cafe" ? "Cafe" : "Sorry, can't make it";
+    var church = (attendance.value === "church" || attendance.value === "both") ? "Yes" : "No";
+    var cafe = (attendance.value === "cafe" || attendance.value === "both") ? "Yes" : "No";
+    var attendanceText = attendance.value === "both" ? "Church & Cafe" :
+                         attendance.value === "church" ? "Church only" :
+                         attendance.value === "cafe" ? "Cafe only" :
+                         "Sorry, can't make it";
 
     var formData = new URLSearchParams();
     formData.append("name", name);
+    formData.append("phone", phone);
     formData.append("pax", pax);
     formData.append("attendance", attendanceText);
     formData.append("church", church);
@@ -179,7 +187,9 @@ function sendRSVP() {
         .then(function () {
             if (status) status.textContent = "Thank you! Your RSVP request has been sent. ❤️";
             alert("Thank you! Your RSVP request has been sent. ❤️");
-            nameInput.value = ""; paxInput.value = "";
+            nameInput.value = "";
+            if (phoneInput) phoneInput.value = "";
+            paxInput.value = "";
             document.querySelectorAll('input[name="attendance"]').forEach(function (radio) { radio.checked = false; });
         })
         .catch(function () {

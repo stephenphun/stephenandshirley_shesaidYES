@@ -3,13 +3,15 @@ STEPHEN & SHIRLEY — GOOGLE SHEETS RSVP SETUP
 Google Sheet: https://docs.google.com/spreadsheets/d/17zfTOF4-BDpfoxLitrFARUxtt9ZpzMcbg7spYiM_ka0/edit
 
 1. Rename the sheet tab to RSVP.
-2. Enter these headings in Row 1: Name | Pax | Attendance | Church (Morning) | Cafe (Dinner) | Submitted At
+2. Set Row 1 headings in this exact order:
+   Name | Phone Number | Pax | Attendance | Church (Morning) | Cafe (Dinner) | Submitted At
 3. Open Extensions > Apps Script. Replace the editor code with google-apps-script.gs and Save.
-4. Click Deploy > New deployment > Select type: Web app.
-5. Execute as: Me. Who has access: Anyone. Click Deploy and approve Google's authorization prompts.
-6. Copy the Web app URL (starts https://script.google.com/macros/s/).
-7. Your deployed Web App URL has already been added to both script.js and script2.js.
-8. Upload the website files to GitHub Pages, submit a test RSVP, and confirm a new row appears in the RSVP tab.
+4. Because the Apps Script code has changed, open Deploy > Manage deployments > Edit (pencil) > Version: New version > Deploy.
+   You can keep the same Web App URL. If Google gives you a new URL, update RSVP_GOOGLE_SCRIPT_URL in script.js and script2.js.
+5. Both invitation pages submit to the same Google Sheet:
+   - index.html: Church invitation (Church / cannot attend)
+   - wedddinginvitation.html: Dinner invitation (Church & Cafe / Church only / Cafe only / cannot attend)
+6. Phone Number is required and saved as text to preserve leading zeroes and +country codes.
+7. Upload the updated website files to GitHub Pages, submit a test RSVP from each page, and confirm the new rows appear in the RSVP tab.
 
-Important: The browser uses a no-cors POST, so it cannot read Google's response. The website message means the request was sent; verify the new row in the Sheet during testing. The Sheet itself does not need public sharing.
-If you change Apps Script later, use Deploy > Manage deployments > Edit and deploy a new version.
+Important: The browser uses a no-cors POST, so it cannot read Google's response. Verify the new row in the Sheet during testing. The Sheet itself does not need public sharing.
